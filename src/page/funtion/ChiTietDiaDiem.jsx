@@ -494,7 +494,7 @@ const DiaDiemDetail = () => {
         {/* Right column_booking */}
         <div className="tour-book-box">
           <h3>Book This Tour</h3>
-          <label>Chọn ngày:</label>
+          {/* <label>Chọn ngày:</label>
           <input type="date" />
           <label>Chọn giờ:</label>
           <div className="tour-time-options">
@@ -507,7 +507,7 @@ const DiaDiemDetail = () => {
             <option value="1">1 người</option>
             <option value="2">2 người</option>
             <option value="3">3 người</option>
-          </select>
+          </select> */}
 
           <div className="tour-buttons">
             <button onClick={handleBookNow} className="book-now-button">

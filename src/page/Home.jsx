@@ -100,7 +100,7 @@ const Home = () => {
       {/* Hero Slider */}
       <div className="hero-slider">
         <div
-          className="slide active-slide"
+          className="slide-background"
           style={{ backgroundImage: `url('${slides[activeSlide].image}')` }}
         >
           <div className="slide-overlay"></div>
