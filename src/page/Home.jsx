@@ -20,6 +20,13 @@ const Home = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const slides = [
     {
+      id: 8,
+      image:
+        "https://mia.vn/media/uploads/blog-du-lich/an-tuong-ve-dep-hung-vi-noi-quan-the-danh-thang-trang-an-1-1640247493.jpg",
+      title: "Tràng An",
+      description: "Khu du lịch sinh thái Tràng An",
+    },
+    {
       id: 7,
       image:
         "https://cdn.pixabay.com/photo/2019/05/29/00/08/vietnam-4236430_1280.jpg",
@@ -31,13 +38,6 @@ const Home = () => {
       image: "https://cdn.xanhsm.com/2025/02/f69feca7-canh-dep-phu-quoc-7.jpg",
       title: "Phú Quốc",
       description: "Thiên đường biển đảo của miền Nam",
-    },
-    {
-      id: 8,
-      image:
-        "https://mia.vn/media/uploads/blog-du-lich/an-tuong-ve-dep-hung-vi-noi-quan-the-danh-thang-trang-an-1-1640247493.jpg",
-      title: "Tràng An",
-      description: "Khu du lịch sinh thái Tràng An",
     },
   ];
   const Dia_Diem = [
@@ -99,33 +99,32 @@ const Home = () => {
 
       {/* Hero Slider */}
       <div className="hero-slider">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`slide ${index === activeSlide ? "active-slide" : ""}`}
-          >
-            <div
-              className="slide-background"
-              style={{ backgroundImage: `url('${slide.image}')` }}
-            >
-              <div className="slide-overlay"></div>
-            </div>
-            <div className="slide-content">
-              <div className="slide-text">
-                <h1 className="slide-title">{slide.title}</h1>
-                <p className="slide-description">{slide.description}</p>
-                <div className="slide-buttons">
-                  <button className="primary-button" onClick={() => navigate(`/Dia-Diem/${slide.id}`)}>
-                    Đặt tour ngay <ArrowRight className="button-icon" />
-                  </button>
-                  <button className="secondary-button" onClick={() => navigate(`/dia-diem/${slide.id}`)}>
-                    Tìm hiểu thêm
-                  </button>
-                </div>
+        <div
+          className="slide active-slide"
+          style={{ backgroundImage: `url('${slides[activeSlide].image}')` }}
+        >
+          <div className="slide-overlay"></div>
+          <div className="slide-content">
+            <div className="slide-text">
+              <h1 className="slide-title">{slides[activeSlide].title}</h1>
+              <p className="slide-description">{slides[activeSlide].description}</p>
+              <div className="slide-buttons">
+                <button
+                  className="primary-button"
+                  onClick={() => navigate(`/dia-diem/${slides[activeSlide].id}`)}
+                >
+                  Đặt tour ngay <ArrowRight className="button-icon" />
+                </button>
+                <button
+                  className="secondary-button"
+                  onClick={() => navigate(`/dia-diem/${slides[activeSlide].id}`)}
+                >
+                  Tìm hiểu thêm
+                </button>
               </div>
             </div>
           </div>
-        ))}
+        </div>
 
         {/* Slide indicators */}
         <div className="slide-indicators">
@@ -133,13 +132,16 @@ const Home = () => {
             <button
               key={index}
               onClick={() => setActiveSlide(index)}
-              className={`slide-indicator ${index === activeSlide ? "active-indicator" : ""
+              className={`slide-indicator${index === activeSlide ? " active-indicator" : ""
                 }`}
               aria-label={`Slide ${index + 1}`}
+              aria-current={index === activeSlide ? "true" : undefined}
             />
           ))}
         </div>
       </div>
+
+
       {/* Travel Navigation Bar - added here as requested */}
       <div className="travel-container">
         {/* Navigation Tabs */}
