@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -29,7 +29,7 @@ const Home = () => {
     {
       id: 7,
       image:
-        "https://cdn.pixabay.com/photo/2019/05/29/00/08/vietnam-4236430_1280.jpg",
+        "https://cdn.pixabay.com/photo/2016/10/16/17/03/vietnam-1745819_1280.jpg",
       title: "Vịnh Hạ Long",
       description: "Kỳ quan thiên nhiên thế giới tại Việt Nam",
     },
@@ -78,6 +78,29 @@ const Home = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
+
+  // Menu
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuVisible(false);
+      }
+    };
+  
+    if (menuVisible) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+  
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuVisible]);
+  
+
   return (
     <div className="home-container">
       {/* Toggle button */}
@@ -87,7 +110,7 @@ const Home = () => {
 
       {/* Left Box Menu */}
       {menuVisible && (
-        <div className="left-box-menu">
+        <div className="left-box-menu" ref={menuRef}>
           <ul>
             <li><button onClick={() => document.getElementById('hero-slider').scrollIntoView({ behavior: 'smooth' })}>🏠 Trang chủ</button></li>
             <li><button onClick={() => document.getElementById('diem-den').scrollIntoView({ behavior: 'smooth' })}>📍 Điểm đến</button></li>
