@@ -18,9 +18,9 @@ const Footer = () => {
             <p className="footer-description">
               -4th floor, Royal City, 666 Nguyen Trai District, Ho Chi Minh
             </p>
-            <div className ="footer-phone-number" >
+            {/* <div className ="footer-phone-number" >
               <a href="tel:+ (+84) 394 02 1004">(+84) 394 02 1004</a>
-            </div>
+            </div> */}
           </div>
 
           <div className="footer-column links-column">

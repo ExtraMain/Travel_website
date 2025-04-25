@@ -88,24 +88,24 @@ const Home = () => {
         setMenuVisible(false);
       }
     };
-  
+
     if (menuVisible) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
-  
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuVisible]);
-  
+
 
   return (
     <div className="home-container">
       {/* Toggle button */}
       <button className="menu-toggle-button" onClick={() => setMenuVisible(!menuVisible)}>
-        ☰ 
+        ☰
       </button>
 
       {/* Left Box Menu */}
@@ -240,12 +240,19 @@ const Home = () => {
         </div> */}
       </div>
       <div className="section destinations-section">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
         <div className="section-header">
           <div>
             <h2 className="section-title" id="diem-den">Điểm đến nổi bật</h2>
             <p className="section-subtitle">
               Những địa điểm được yêu thích nhất năm 2025
+              <div class="title-icon-line">
+                <span class="line"></span>
+                <i class="fas fa-plane icon"></i>
+                <span class="line"></span>
+              </div>
             </p>
+
           </div>
           <button
             className="view-all-button"
@@ -345,7 +352,14 @@ const Home = () => {
       </div>
       {/* Services */}
       <div className="section services-section">
-        <h2 className="section-title center">Dịch vụ của chúng tôi</h2>
+        <section class="recommended-section">
+          <div class="background-text">SERVICES</div>
+          <div class="content">
+            <h2>Dịch vụ của chúng tôi</h2>
+            <a href="#" class="view-all">View All Recommended →</a>
+          </div>
+        </section>
+
         <div className="services-grid">
           {[
             {
